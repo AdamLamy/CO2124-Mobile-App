@@ -11,9 +11,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.part2.models.CourseStudentCrossRef;
 import com.example.part2.models.Student;
 import com.example.part2.viewmodel.StudentViewModel;
+import com.example.part2.viewmodel.StudentViewModelFactory;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AddStudentActivity extends AppCompatActivity {
-
     private EditText editTextName, editTextEmail, editTextMatric;
     private Button buttonAddStudent;
     private StudentViewModel studentViewModel;
@@ -25,7 +28,11 @@ public class AddStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_student);
 
         courseId = getIntent().getIntExtra("courseId", -1);
-        studentViewModel = new ViewModelProvider(this).get(StudentViewModel.class);
+
+
+        //studentViewModel = new ViewModelProvider(this).get(StudentViewModel.class);
+        StudentViewModelFactory factory = new StudentViewModelFactory(getApplication());
+        studentViewModel = new ViewModelProvider(this, factory).get(StudentViewModel.class);
 
         editTextName = findViewById(R.id.editTextName);
         editTextEmail = findViewById(R.id.editTextEmail);
@@ -37,52 +44,46 @@ public class AddStudentActivity extends AppCompatActivity {
             String email = editTextEmail.getText().toString().trim();
             String matric = editTextMatric.getText().toString().trim();
 
+            if (courseId == -1) {
+                Toast.makeText(this, "Error: Course ID not provided.", Toast.LENGTH_SHORT).show();
+                finish();
+                return;
+            }
+
             if (name.isEmpty() || email.isEmpty() || matric.isEmpty()) {
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Query: check if student exists
-            Student existingStudent = studentViewModel.getStudentByUserNameSync(matric);
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            executor.execute(() -> {
+                Student existingStudent = studentViewModel.getStudentByUserNameSync(matric);
 
-            if (existingStudent == null) {
-                // New student -> insert
-                Student newStudent = new Student(name, email, matric);
-
-
-                // this may need to be called with a background thread but idk lol, something like this:
-
-//                executorService.submit(() -> {
-//                    long newId = studentDao.insertAndReturnId(student);
-//                    if (newId != -1) {
-//                        // success: enroll the student
-//                    } else {
-//                        // student already exists
-//                    }
-//                });
-
-                int newId = (int) studentViewModel.insertAndReturnId(newStudent);
-
-                // Enroll
-                CourseStudentCrossRef enrollment = new CourseStudentCrossRef(courseId, newId);
-                studentViewModel.enrollStudent(enrollment);
-                Toast.makeText(this, "Student added and enrolled", Toast.LENGTH_SHORT).show();
-                finish();
-
-            } else {
-                // Check if already enrolled
-                boolean isEnrolled = studentViewModel.isStudentEnrolled(courseId, existingStudent.getStudentId());
-
-                if (isEnrolled) {
-                    Toast.makeText(this, "Student already enrolled", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Only enroll (student already exists)
-                    CourseStudentCrossRef enrollment = new CourseStudentCrossRef(courseId, existingStudent.getStudentId());
+                if (existingStudent == null) {
+                    Student newStudent = new Student(name, email, matric);
+                    int newId = (int) studentViewModel.insertAndReturnId(newStudent);
+                    CourseStudentCrossRef enrollment = new CourseStudentCrossRef(courseId, newId);
                     studentViewModel.enrollStudent(enrollment);
-                    Toast.makeText(this, "Student enrolled to course", Toast.LENGTH_SHORT).show();
-                    finish();
+
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Student added and enrolled", Toast.LENGTH_SHORT).show();
+                        finish();
+                    });
+                } else {
+                    boolean isEnrolled = studentViewModel.isStudentEnrolled(courseId, existingStudent.getStudentId());
+
+                    runOnUiThread(() -> {
+                        if (isEnrolled) {
+                            Toast.makeText(this, "Student already enrolled", Toast.LENGTH_SHORT).show();
+                        } else {
+                            CourseStudentCrossRef enrollment = new CourseStudentCrossRef(courseId, existingStudent.getStudentId());
+                            studentViewModel.enrollStudent(enrollment);
+                            Toast.makeText(this, "Student enrolled to course", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    });
                 }
-            }
+            });
         });
     }
 }
