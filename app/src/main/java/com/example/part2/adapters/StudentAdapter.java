@@ -2,6 +2,7 @@ package com.example.part2.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.part2.CourseDetailsActivity;
 import com.example.part2.R;
+import com.example.part2.StudentDetailsActivity;
 import com.example.part2.models.Student;
 
 import java.util.ArrayList;
@@ -46,6 +48,17 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         holder.textViewMatric.setText(student.getUserName());
 
         holder.itemView.setOnClickListener(v -> {
+            // Launch StudentDetailsActivity
+            Intent intent = new Intent(context, StudentDetailsActivity.class);
+            intent.putExtra("name", student.getName());
+            intent.putExtra("email", student.getEmail());
+            intent.putExtra("matric", student.getUserName());
+            // TODO: Replace with actual list of courses for the student
+            intent.putStringArrayListExtra("courses", new ArrayList<>()); // Placeholder
+            context.startActivity(intent);
+        });
+
+        holder.itemView.setOnLongClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("Select Action")
                     .setItems(new CharSequence[]{"Edit", "Remove"}, (dialog, which) -> {
@@ -54,6 +67,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
                         }
                     });
             builder.show();
+            return true;
         });
     }
 
@@ -74,7 +88,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
 
         StudentViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewName = itemView.findViewById(R.id.textViewName); // Your layout should have this
+            textViewName = itemView.findViewById(R.id.textViewName);
             textViewEmail = itemView.findViewById(R.id.textViewStudentEmail);
             textViewMatric = itemView.findViewById(R.id.textViewStudentMatric);
         }

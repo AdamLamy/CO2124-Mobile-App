@@ -39,5 +39,6 @@ public class StudentDetailsActivity extends AppCompatActivity {
 
         coursesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, coursesList);
         listViewCourses.setAdapter(coursesAdapter);
+
     }
 }
