@@ -2,6 +2,8 @@ package com.example.part2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +16,6 @@ import com.example.part2.viewmodel.CourseViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
-
     private CourseViewModel courseViewModel;
     private CourseAdapter courseAdapter;
 
@@ -58,8 +59,18 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         });
 
+        TextView textEmptyCourses = findViewById(R.id.textEmptyCourses);
+
+        // Observe the course list
+        courseViewModel.getAllCoursesLiveData().observe(this, courses -> {
+            courseAdapter.setCourseList(courses);
+            if (courses == null || courses.isEmpty()) {
+                textEmptyCourses.setVisibility(View.VISIBLE);
+            } else {
+                textEmptyCourses.setVisibility(View.GONE);
+            }
+        });
 
     }
-
 }
 

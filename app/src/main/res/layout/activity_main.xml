@@ -31,20 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp" />
 
-    <TextView
-        android:id="@+id/textEmptyStudents"
-        android:layout_width="37dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="No students enrolled in this course."
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCourses" />
-
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCourses"
@@ -67,6 +53,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp" />
+
+    <TextView
+        android:id="@+id/textEmptyCourses"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="No courses found \n Press the plus to add a new course"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

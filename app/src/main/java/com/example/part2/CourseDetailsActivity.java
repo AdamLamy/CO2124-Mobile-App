@@ -25,6 +25,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
 
+        TextView noStudentsText = findViewById(R.id.textNoStudents);
         TextView courseCode = findViewById(R.id.textDetailCourseCode);
         TextView courseName = findViewById(R.id.textDetailCourseName);
         TextView lecturerName = findViewById(R.id.textDetailLecturerName);
@@ -48,8 +49,16 @@ public class CourseDetailsActivity extends AppCompatActivity {
             });
 
             courseViewModel.getStudentsForCourse(courseId).observe(this, students -> {
-                studentAdapter.setStudentList(students);
+                if (students == null || students.isEmpty()) {
+                    noStudentsText.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    noStudentsText.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    studentAdapter.setStudentList(students);
+                }
             });
+
 
             View fabAddStudent = findViewById(R.id.fab_add_student);
             fabAddStudent.setOnClickListener(v -> {
