@@ -33,7 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                     AppDatabase.class,
                                     "course_management_database"
                             )
-                            .fallbackToDestructiveMigration()  // (Dev-friendly: rebuilds if schema mismatch)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

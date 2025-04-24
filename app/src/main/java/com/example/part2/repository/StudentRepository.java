@@ -52,9 +52,8 @@ public class StudentRepository {
         return studentDao.getCoursesForStudent(studentId);
     }
 
-
     public long insertAndReturnId(Student student) {
-        return studentDao.insertAndReturnId(student);  // this is a synchronous method, call it in a background thread!
+        return studentDao.insertAndReturnId(student);
     }
 }
 

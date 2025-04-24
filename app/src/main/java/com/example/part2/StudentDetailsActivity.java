@@ -2,20 +2,24 @@ package com.example.part2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.part2.adapters.CourseAdapter;
+import com.example.part2.data.AppDatabase;
+import com.example.part2.models.Course;
+import com.example.part2.models.StudentWithCourses;
 
 import java.util.ArrayList;
 
 public class StudentDetailsActivity extends AppCompatActivity {
 
     TextView textViewName, textViewEmail, textViewMatric;
-    ListView listViewCourses;
-    ArrayAdapter<String> coursesAdapter;
-    ArrayList<String> coursesList;
+    RecyclerView recyclerViewCourses;
+    CourseAdapter courseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +29,32 @@ public class StudentDetailsActivity extends AppCompatActivity {
         textViewName = findViewById(R.id.textViewStudentName);
         textViewEmail = findViewById(R.id.textViewStudentEmail);
         textViewMatric = findViewById(R.id.textViewStudentMatric);
-        listViewCourses = findViewById(R.id.listViewCourses);
+        recyclerViewCourses = findViewById(R.id.recyclerViewCourses);
 
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        String email = intent.getStringExtra("email");
-        String matric = intent.getStringExtra("matric");
-        coursesList = intent.getStringArrayListExtra("courses");
+        recyclerViewCourses.setLayoutManager(new LinearLayoutManager(this));
+        courseAdapter = new CourseAdapter();
+        recyclerViewCourses.setAdapter(courseAdapter);
 
-        textViewName.setText("Name: " + name);
-        textViewEmail.setText("Email: " + email);
-        textViewMatric.setText("Matric No: " + matric);
+        // Get studentId
+        int studentId = getIntent().getIntExtra("studentId", -1);
 
-        coursesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, coursesList);
-        listViewCourses.setAdapter(coursesAdapter);
+        if (studentId != -1) {
+            // Fetch student details and courses from the database
+            new Thread(() -> {
+                AppDatabase db = AppDatabase.getInstance(getApplicationContext());
+                StudentWithCourses studentWithCourses = db.studentDao().getStudentWithCourses(studentId);
 
+                runOnUiThread(() -> {
+                    if (studentWithCourses != null) {
+                        textViewName.setText("Name: " + studentWithCourses.student.getName());
+                        textViewEmail.setText("Email: " + studentWithCourses.student.getEmail());
+                        textViewMatric.setText("Matric No: " + studentWithCourses.student.getUserName());
+
+                        courseAdapter.setCourseList(studentWithCourses.courses);
+                    }
+                });
+            }).start();
+        }
     }
 }
+

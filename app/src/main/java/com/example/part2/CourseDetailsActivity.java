@@ -63,7 +63,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
             View fabAddStudent = findViewById(R.id.fab_add_student);
             fabAddStudent.setOnClickListener(v -> {
                 Intent intent = new Intent(this, AddStudentActivity.class);
-                intent.putExtra("courseId", courseId);  // pass course ID!
+                intent.putExtra("courseId", courseId);
                 startActivity(intent);
             });
         }
@@ -74,11 +74,11 @@ public class CourseDetailsActivity extends AppCompatActivity {
         switch (action) {
             case 0: // Edit
                 Intent editIntent = new Intent(this, EditStudentActivity.class);
-                editIntent.putExtra("studentId", String.valueOf(student.getStudentId())); // Pass as String or int
+                editIntent.putExtra("studentId", String.valueOf(student.getStudentId())); // Convert int to String
                 editIntent.putExtra("name", student.getName());
                 editIntent.putExtra("email", student.getEmail());
                 editIntent.putExtra("matric", student.getUserName());
-                startActivityForResult(editIntent, 1); // Handle result below
+                startActivityForResult(editIntent, 1);
                 break;
 
             case 1: // Remove
@@ -97,7 +97,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
             String updatedEmail = data.getStringExtra("updatedEmail");
             String updatedMatric = data.getStringExtra("updatedMatric");
 
-            courseViewModel.updateStudent(updatedName, updatedEmail, updatedMatric); // You need this in ViewModel
+            courseViewModel.updateStudent(updatedName, updatedEmail, updatedMatric);
         }
     }
 }

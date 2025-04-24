@@ -19,7 +19,7 @@ public class EditStudentActivity extends AppCompatActivity {
 
     EditText editTextName, editTextEmail, editTextMatric;
     Button buttonSave;
-    String studentId; // Assuming you have a unique ID to identify students
+    String studentId; // used to identify students
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

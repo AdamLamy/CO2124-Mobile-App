@@ -17,7 +17,7 @@ import java.util.List;
 @Dao
 public interface StudentDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)  // avoid duplicate students (based on primary key)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)  //use p-key to prevent duplicates
     void insertStudent(Student student);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -42,5 +42,8 @@ public interface StudentDao {
     @Query("SELECT * FROM students WHERE studentId = :id LIMIT 1")
     Student getStudentById(int id);
 
+    @Transaction
+    @Query("SELECT * FROM students WHERE studentId = :studentId")
+    StudentWithCourses getStudentWithCourses(int studentId);
 }
 

@@ -30,7 +30,7 @@ public class AddStudentActivity extends AppCompatActivity {
         courseId = getIntent().getIntExtra("courseId", -1);
 
 
-        //studentViewModel = new ViewModelProvider(this).get(StudentViewModel.class);
+
         StudentViewModelFactory factory = new StudentViewModelFactory(getApplication());
         studentViewModel = new ViewModelProvider(this, factory).get(StudentViewModel.class);
 

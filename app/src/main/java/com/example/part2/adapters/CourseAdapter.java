@@ -58,7 +58,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         notifyDataSetChanged();
     }
 
-    // Existing click interface - unchanged
     public interface OnCourseClickListener {
         void onCourseClick(Course course);
     }
@@ -69,7 +68,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         this.clickListener = listener;
     }
 
-    // New long-press interface
     public interface OnCourseLongClickListener {
         void onCourseLongClick(Course course);
     }

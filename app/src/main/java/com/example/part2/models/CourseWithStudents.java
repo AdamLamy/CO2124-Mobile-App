@@ -6,8 +6,6 @@ import androidx.room.Relation;
 
 import java.util.List;
 
-
-// Can probably delete this class
 public class CourseWithStudents {
     @Embedded
     public Course course;

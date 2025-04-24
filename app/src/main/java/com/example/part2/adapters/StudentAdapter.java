@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.part2.CourseDetailsActivity;
 import com.example.part2.R;
 import com.example.part2.StudentDetailsActivity;
@@ -48,13 +47,11 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         holder.textViewMatric.setText(student.getUserName());
 
         holder.itemView.setOnClickListener(v -> {
-            // Launch StudentDetailsActivity
             Intent intent = new Intent(context, StudentDetailsActivity.class);
             intent.putExtra("name", student.getName());
             intent.putExtra("email", student.getEmail());
             intent.putExtra("matric", student.getUserName());
-            // TODO: Replace with actual list of courses for the student
-            intent.putStringArrayListExtra("courses", new ArrayList<>()); // Placeholder
+            intent.putExtra("studentId", student.getStudentId());
             context.startActivity(intent);
         });
 

@@ -22,7 +22,6 @@ public class CourseRepository {
     private final ExecutorService executorService;
 
     private final StudentDao studentDao;
-//    private final CourseStudentCrossRefDao crossRefDao;
 
     public CourseRepository(Application application) {
         AppDatabase db = AppDatabase.getInstance(application);
@@ -30,7 +29,6 @@ public class CourseRepository {
         executorService = Executors.newSingleThreadExecutor();
         studentDao = db.studentDao();
         enrollmentDao = db.enrollmentDao();
-//        crossRefDao = db.courseStudentCrossRefDao();
     }
 
     public void insert(Course course) {
@@ -49,7 +47,6 @@ public class CourseRepository {
         return courseDao.getAllCoursesLiveData();
     }
 
-    // Get students for a course (LiveData for UI)
     public LiveData<List<Student>> getStudentsForCourse(int courseId) {
         return courseDao.getStudentsForCourse(courseId);
     }
@@ -64,11 +61,11 @@ public class CourseRepository {
 
     public void removeStudentFromCourse(int courseId, String userName) {
         executorService.execute(() -> {
-            // Find student by userName
+
             Student student = studentDao.getStudentByUserName(userName);
             if (student != null) {
                 int studentId = student.getStudentId();
-                // Assuming crossRefDao exists and is used for enrollments
+
                 enrollmentDao.removeStudentFromCourse(courseId, studentId);
             }
         });
