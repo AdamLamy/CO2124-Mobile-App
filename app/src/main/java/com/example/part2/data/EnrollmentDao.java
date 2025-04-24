@@ -27,5 +27,8 @@ public interface EnrollmentDao {
 
     @Query("SELECT COUNT(*) FROM CourseStudentCrossRef WHERE courseId = :courseId AND studentId = :studentId")
     int isStudentEnrolled(int courseId, int studentId);
+
+    @Query("DELETE FROM CourseStudentCrossRef WHERE courseId = :courseId AND studentId = :studentId")
+    void removeStudentFromCourse(int courseId, int studentId);
 }
 

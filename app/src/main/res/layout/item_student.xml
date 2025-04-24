@@ -11,25 +11,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <TextView
-            android:id="@+id/textStudentName"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            />
 
         <TextView
-            android:id="@+id/textStudentEmail"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewStudentEmail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+           />
 
         <TextView
-            android:id="@+id/textStudentMatric"
-            android:layout_width="wrap_content"
+            android:id="@+id/textViewStudentMatric"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+           />
+
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

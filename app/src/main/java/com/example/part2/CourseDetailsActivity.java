@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import com.example.part2.models.Student;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,7 +16,6 @@ import com.example.part2.adapters.StudentAdapter;
 import com.example.part2.viewmodel.CourseViewModel;
 
 public class CourseDetailsActivity extends AppCompatActivity {
-
     private CourseViewModel courseViewModel;
     private StudentAdapter studentAdapter;
     private int courseId;
@@ -29,7 +30,8 @@ public class CourseDetailsActivity extends AppCompatActivity {
         TextView lecturerName = findViewById(R.id.textDetailLecturerName);
         RecyclerView recyclerView = findViewById(R.id.recyclerViewStudents);
 
-        studentAdapter = new StudentAdapter();
+        studentAdapter = new StudentAdapter(this);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(studentAdapter);
 
@@ -55,8 +57,40 @@ public class CourseDetailsActivity extends AppCompatActivity {
                 intent.putExtra("courseId", courseId);  // pass course ID!
                 startActivity(intent);
             });
+        }
+    }
 
+    // Move this outside onCreate
+    public void handleStudentAction(int action, Student student, int position) {
+        switch (action) {
+            case 0: // Edit
+                Intent editIntent = new Intent(this, EditStudentActivity.class);
+                editIntent.putExtra("studentId", String.valueOf(student.getStudentId())); // Pass as String or int
+                editIntent.putExtra("name", student.getName());
+                editIntent.putExtra("email", student.getEmail());
+                editIntent.putExtra("matric", student.getUserName());
+                startActivityForResult(editIntent, 1); // Handle result below
+                break;
+
+            case 1: // Remove
+                courseViewModel.removeStudentFromCourse(courseId, student.getUserName());
+                studentAdapter.removeStudent(position); // Update UI
+                break;
+        }
+    }
+
+    // Move this outside onCreate too
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            String updatedName = data.getStringExtra("updatedName");
+            String updatedEmail = data.getStringExtra("updatedEmail");
+            String updatedMatric = data.getStringExtra("updatedMatric");
+
+            courseViewModel.updateStudent(updatedName, updatedEmail, updatedMatric); // You need this in ViewModel
         }
     }
 }
+
 

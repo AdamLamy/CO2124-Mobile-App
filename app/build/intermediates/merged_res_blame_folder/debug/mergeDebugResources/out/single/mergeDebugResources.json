@@ -1,0 +1,102 @@
+[
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_activity_student_details.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\activity_student_details.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_activity_create_course.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\activity_create_course.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_activity_add_student.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\activity_add_student.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_item_course.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\item_course.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_activity_course_details.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\activity_course_details.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.part2.app-debug-34:/layout_item_student.xml.flat",
+        "source": "com.example.part2.app-main-36:/layout/item_student.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-anydpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_activity_edit_student.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\activity_edit_student.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\layout_item_student.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\layout\\item_student.xml"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-debug-34:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\adaml_\\.gradle\\daemon\\8.11.1\\com.example.part2.app-main-36:\\mipmap-anydpi\\ic_launcher.xml"
+    }
+]

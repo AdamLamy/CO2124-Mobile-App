@@ -46,4 +46,14 @@ public class CourseViewModel extends AndroidViewModel {
     public LiveData<List<Student>> getStudentsForCourse(int courseId) {
         return repository.getStudentsForCourse(courseId);
     }
+
+    public void removeStudentFromCourse(int courseId, String userName) {
+        repository.removeStudentFromCourse(courseId, userName);
+    }
+
+    public void updateStudent(String name, String email, String userName) {
+        Student updatedStudent = new Student(name, email, userName);
+        repository.updateStudent(updatedStudent);
+    }
+
 }

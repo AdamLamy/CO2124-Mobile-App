@@ -41,5 +41,6 @@ public interface StudentDao {
 
     @Query("SELECT * FROM students WHERE studentId = :id LIMIT 1")
     Student getStudentById(int id);
+
 }
 
